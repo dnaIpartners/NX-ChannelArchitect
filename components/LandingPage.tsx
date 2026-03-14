@@ -64,7 +64,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginSuccess }) => {
       {/* Main Content */}
       <main className="relative z-10 flex flex-col justify-center min-h-[calc(100vh-85px)] px-12 md:px-24 lg:px-32">
         <div className="max-w-4xl">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 tracking-tight">
             AI는 사람을 대신하는 것이 아니라,<br />
             <span className="text-blue-500">역량을 한 단계 위로</span><br />
             끌어올리는 것입니다.
@@ -76,7 +76,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginSuccess }) => {
             onClick={() => setShowLogin(true)}
             className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full text-lg font-bold flex items-center gap-3 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.4)]"
           >
-            플랫폼 시작하기 <i className="fas fa-arrow-right"></i>
+            NX ChannelArchitect 시작하기 <i className="fas fa-arrow-right"></i>
           </button>
         </div>
       </main>
@@ -94,9 +94,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginSuccess }) => {
             
             <div className="text-center mb-8">
               <div className="flex items-center justify-center gap-2 mb-2">
-                <div className="w-3 h-3 bg-blue-600 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
-                <span className="font-bold text-2xl tracking-tight text-white">i-PIE</span>
-                <span className="text-slate-400 text-2xl font-light">AX Platform</span>
+                <div className="w-3 h-3 bg-blue-600 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>             
+                <span className="text-slate-400 text-2xl font-light">NX Platform</span>
               </div>
               <h2 className="text-lg font-medium text-slate-300 mt-4">로그인</h2>
             </div>

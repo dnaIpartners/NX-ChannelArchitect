@@ -41,7 +41,7 @@ const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
 
         <div className="overflow-y-auto pr-2 flex-grow">
             <Section title="앱 개요">
-                <p><strong>GPT PARK의 유튜브 채널 컨설턴트 PRO</strong>는 유튜브 크리에이터를 위한 강력한 AI 기반 데이터 분석 도구입니다. 이 앱을 통해 채널과 키워드를 심층 분석하여 숨겨진 인사이트를 발견하고, 데이터 기반의 성장 전략을 수립할 수 있습니다.</p>
+                <p><strong>NX ChannelArchitect</strong>는 크리에이터를 위한 강력한 AI 기반 데이터 분석 도구입니다. 이 앱을 통해 채널과 키워드를 심층 분석하여 숨겨진 인사이트를 발견하고, 데이터 기반의 성장 전략을 수립할 수 있습니다.</p>
             </Section>
 
             <Section title="1. YouTube Data API v3 키 발급 및 설정">

@@ -614,7 +614,7 @@ const App: React.FC = () => {
                 <h1 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight">
                   <i className="fas fa-rocket text-blue-600 mr-2"></i>
                   NX ChannelArchitect
-                  <sup className="text-blue-500 font-bold text-lg ml-1">PRO</sup>
+                  <sup className="text-blue-500 font-bold text-lg ml-1">BETA</sup>
                 </h1>
                 <p className="text-slate-500 dark:text-slate-400 mt-1">유튜브 채널과 키워드를 분석하고 숨겨진 인사이트를 발견하세요.</p>
              </div>
