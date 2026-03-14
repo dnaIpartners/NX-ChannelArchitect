@@ -87,6 +87,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginSuccess }) => {
             >
               NX ContextCast <i className="fas fa-external-link-alt"></i>
             </a>
+              <a 
+              href="https://nx-context-cast.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 px-8 py-4 rounded-full text-lg font-bold flex items-center justify-center gap-3 transition-colors shadow-[0_0_20px_rgba(30,41,59,0.4)]"
+            >
+              NX Agent <i className="fas fa-external-link-alt"></i>
+            </a>
           </div>
         </div>
       </main>
