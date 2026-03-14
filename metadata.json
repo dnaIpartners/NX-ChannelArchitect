@@ -1,0 +1,5 @@
+{
+  "name": "NX ChannelArchitect",
+  "description": "유튜브 크리에이터를 위한 데이터 분석 도구입니다. 채널의 모든 영상을 분석하여 조회수, 좋아요, 댓글을 기반으로 인기 영상을 찾아내고, 채널 성장을 위한 인사이트를 제공합니다.",
+  "requestFramePermissions": []
+}
