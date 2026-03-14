@@ -3,6 +3,7 @@ import type { YouTubeChannel, VideoDetails, VideoStatistics, AnalyzedVideo, Stra
 import { GoogleGenAI, Type } from "@google/genai";
 
 const LOCAL_STORAGE_KEY = 'yt_ak_e'; // Short name for less conspicuous storage key
+const GEMINI_LOCAL_STORAGE_KEY = 'gm_ak_e';
 
 // Simple XOR "encryption". Not cryptographically secure, but obfuscates the key.
 const SECRET_KEY = 'youtube-data-explorer-secret';
@@ -55,8 +56,34 @@ export const getApiKey = (): string | undefined => {
   return undefined;
 }
 
+export const setGeminiApiKey = (key: string) => {
+  if (!key) {
+    localStorage.removeItem(GEMINI_LOCAL_STORAGE_KEY);
+  } else {
+    localStorage.setItem(GEMINI_LOCAL_STORAGE_KEY, encrypt(key));
+  }
+};
+
+export const getGeminiApiKey = (): string | undefined => {
+  const encryptedKey = localStorage.getItem(GEMINI_LOCAL_STORAGE_KEY);
+  if (encryptedKey) {
+    try {
+      return decrypt(encryptedKey);
+    } catch (e) {
+      console.error("Gemini API 키 복호화 실패, 저장된 키를 삭제합니다.", e);
+      localStorage.removeItem(GEMINI_LOCAL_STORAGE_KEY);
+      return undefined;
+    }
+  }
+  
+  const envKey = process.env.GEMINI_API_KEY;
+  if (envKey && envKey !== 'YOUR_GEMINI_API_KEY') return envKey;
+  
+  return undefined;
+}
+
 export const isApiKeySet = (): boolean => {
-  return getApiKey() !== undefined;
+  return getApiKey() !== undefined && getGeminiApiKey() !== undefined;
 };
 
 export const testApiKey = async (key: string): Promise<{ success: boolean; error?: Error }> => {
@@ -312,9 +339,9 @@ async function getVideoDetailsAndStats(videoIds: string[]): Promise<(VideoDetail
 }
 
 export async function summarizeTranscript(description: string): Promise<string> {
-  const apiKey = getApiKey();
+  const apiKey = getGeminiApiKey();
   if (!apiKey) {
-    throw new Error('API 키가 설정되지 않아 요약 기능을 사용할 수 없습니다.');
+    throw new Error('Gemini API 키가 설정되지 않아 요약 기능을 사용할 수 없습니다.');
   }
 
   try {
@@ -601,9 +628,9 @@ const strategySchema = {
 
 
 export async function generateChannelStrategy(channel: YouTubeChannel, videos: AnalyzedVideo[]): Promise<StrategyResult> {
-    const apiKey = getApiKey();
+    const apiKey = getGeminiApiKey();
     if (!apiKey) {
-        throw new Error('API 키가 설정되지 않아 전략 분석 기능을 사용할 수 없습니다.');
+        throw new Error('Gemini API 키가 설정되지 않아 전략 분석 기능을 사용할 수 없습니다.');
     }
 
     try {
@@ -682,9 +709,9 @@ ${JSON.stringify(videoDataForPrompt, null, 2)}
 }
 
 export async function generateKeywordStrategy(query: string, videos: AnalyzedVideo[]): Promise<StrategyResult> {
-    const apiKey = getApiKey();
+    const apiKey = getGeminiApiKey();
     if (!apiKey) {
-        throw new Error('API 키가 설정되지 않아 전략 분석 기능을 사용할 수 없습니다.');
+        throw new Error('Gemini API 키가 설정되지 않아 전략 분석 기능을 사용할 수 없습니다.');
     }
 
     try {
@@ -873,9 +900,9 @@ const growthAnalysisSchema = {
 
 
 export async function generateChannelGrowthAnalysis(channel: YouTubeChannel, videos: AnalyzedVideo[]): Promise<GrowthAnalysisResult> {
-    const apiKey = getApiKey();
+    const apiKey = getGeminiApiKey();
     if (!apiKey) {
-        throw new Error('API 키가 설정되지 않아 성장 분석 기능을 사용할 수 없습니다.');
+        throw new Error('Gemini API 키가 설정되지 않아 성장 분석 기능을 사용할 수 없습니다.');
     }
 
     try {
@@ -1332,9 +1359,9 @@ export async function generateTopicInsight(
     analysisResult: TopicAnalysisResult,
     viewStats: { totalViews: number; averageViews: number; medianViews: number }
 ): Promise<TopicInsightResult> {
-    const apiKey = getApiKey();
+    const apiKey = getGeminiApiKey();
     if (!apiKey) {
-        throw new Error('API 키가 설정되지 않아 토픽 인사이트 분석을 사용할 수 없습니다.');
+        throw new Error('Gemini API 키가 설정되지 않아 토픽 인사이트 분석을 사용할 수 없습니다.');
     }
 
     try {
@@ -1467,9 +1494,9 @@ const consultingSchema = {
 };
 
 export async function generateChannelConsulting(channel: YouTubeChannel, videos: AnalyzedVideo[]): Promise<ConsultingResult> {
-    const apiKey = getApiKey();
+    const apiKey = getGeminiApiKey();
     if (!apiKey) {
-        throw new Error('API 키가 설정되지 않아 컨설팅 기능을 사용할 수 없습니다.');
+        throw new Error('Gemini API 키가 설정되지 않아 컨설팅 기능을 사용할 수 없습니다.');
     }
 
     try {

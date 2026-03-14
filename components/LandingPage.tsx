@@ -72,12 +72,22 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginSuccess }) => {
           <p className="text-lg md:text-xl text-slate-300 mb-12 font-light">
             1년차가 5년차의 시야를 갖고, 5년차가 10년차의 깊이를 갖습니다.
           </p>
-          <button 
-            onClick={() => setShowLogin(true)}
-            className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full text-lg font-bold flex items-center gap-3 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.4)]"
-          >
-            NX ChannelArchitect 시작하기 <i className="fas fa-arrow-right"></i>
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button 
+              onClick={() => setShowLogin(true)}
+              className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full text-lg font-bold flex items-center justify-center gap-3 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+            >
+              NX ChannelArchitect<i className="fas fa-arrow-right"></i>
+            </button>
+            <a 
+              href="https://nx-context-cast.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 px-8 py-4 rounded-full text-lg font-bold flex items-center justify-center gap-3 transition-colors shadow-[0_0_20px_rgba(30,41,59,0.4)]"
+            >
+              NX ContextCast <i className="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
       </main>
 
